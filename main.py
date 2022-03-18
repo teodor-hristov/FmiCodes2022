@@ -28,6 +28,8 @@
 #@markdown WARNING: 
 #@markdown Not all datasets are licensed for commercial use (i.e. selling your artwork as an NFT).
 
+#curl -L -o sflckr.yaml -C - 'https://heibox.uni-heidelberg.de/d/73487ab6e5314cb5adba/files/?p=%2Fconfigs%2F2020-11-09T13-31-51-project.yaml&dl=1' #S-FLCKR
+#curl -L -o sflckr.ckpt -C - 'https://heibox.uni-heidelberg.de/d/73487ab6e5314cb5adba/files/?p=%2Fcheckpoints%2Flast.ckpt&dl=1' #S-FLCKR
 
 # !curl -L -o coco.yaml -C - 'https://dl.nmkd.de/ai/clip/coco/coco.yaml' #COCO
 # !curl -L -o coco.ckpt -C - 'https://dl.nmkd.de/ai/clip/coco/coco.ckpt' #COCO
@@ -45,13 +47,14 @@ from IPython import display
 from base64 import b64encode
 from omegaconf import OmegaConf
 from PIL import Image
-from taming.models import cond_transformer#, vqgan
+import taming.models
+from taming.models import cond_transformer, vqgan
 import torch
 from torch import nn, optim
 from torch.nn import functional as F
 from torchvision import transforms
 from torchvision.transforms import functional as TF
-from tqdm.notebook import tqdm
+from tqdm import tqdm
  
 import clip
 import kornia.augmentation as K
@@ -59,10 +62,10 @@ import numpy as np
 import imageio
 from PIL import ImageFile, Image
 from imgtag import ImgTag    # metadata
-from libxmp import *         # metadata
 import libxmp                # metadata
 from stegano import lsb
 import json
+
 ImageFile.LOAD_TRUNCATED_IMAGES = True
  
 def sinc(x):
@@ -227,14 +230,14 @@ def resize_image(image, out_size):
 
 #@title Parameters
 prompts = "george clooney gives advice on becoming rich" #@param {type:"string"}
-width =  256#@param {type:"number"}
-height =  256#@param {type:"number"}
-model = "coco" #@param ["vqgan_imagenet_f16_16384", "vqgan_imagenet_f16_1024", "wikiart_16384", "coco", "faceshq", "sflckr"]
+width =  64#@param {type:"number"}
+height =  64#@param {type:"number"}
+model = "sflckr" #@param ["vqgan_imagenet_f16_16384", "vqgan_imagenet_f16_1024", "wikiart_16384", "coco", "faceshq", "sflckr"]
 display_frequency =  25#@param {type:"number"}
 initial_image = ""#@param {type:"string"}
 target_images = ""#@param {type:"string"}
 seed = -1#@param {type:"number"}
-max_iterations = 200#@param {type:"number"}
+max_iterations = 20#@param {type:"number"}
 input_images = ""
 
 model_names={"vqgan_imagenet_f16_16384": 'ImageNet 16384',"vqgan_imagenet_f16_1024":"ImageNet 1024", 
