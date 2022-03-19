@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:baselineAligned="false">
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="fill_parent"
+        android:layout_weight = "0.8"
+        android:id="@+id/canvas">
+
+        <com.example.drawingapp.PaintView
+            android:id="@+id/paint_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="fill_parent"
+        android:layout_weight = "0.2"
+        android:id="@+id/toolBar">
+
+        <ImageButton
+            android:id="@+id/blackPencilBtn"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="5dp"
+            android:padding="0pt"
+            android:scaleType="fitXY"
+            android:src="@drawable/simple_pencil"
+            app:layout_constraintBottom_toBottomOf="@+id/purplePencilBtn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="@string/pencil_names" />
+
+        <ImageButton
+            android:id="@+id/purplePencilBtn"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="60dp"
+            android:contentDescription="@string/pencil_names"
+            android:padding="0pt"
+            android:scaleType="fitXY"
+            android:src="@drawable/simple_pencil"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/blackPencilBtn"
+            app:layout_constraintTop_toTopOf="@id/blackPencilBtn" />
+
+        <ImageButton
+            android:id="@+id/bluePencilBtn"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="115dp"
+            android:contentDescription="@string/pencil_names"
+            android:padding="0pt"
+            android:scaleType="fitXY"
+            android:src="@drawable/simple_pencil"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/blackPencilBtn"
+            app:layout_constraintTop_toTopOf="@id/blackPencilBtn" />
+
+        <ImageButton
+            android:id="@+id/turquoisePencilBtn"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="170dp"
+            android:contentDescription="@string/pencil_names"
+            android:padding="0pt"
+            android:scaleType="fitXY"
+            android:src="@drawable/simple_pencil"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/blackPencilBtn"
+            app:layout_constraintTop_toTopOf="@id/blackPencilBtn" />
+
+        <ImageButton
+            android:id="@+id/greenPencilBtn"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="225dp"
+            android:contentDescription="@string/pencil_names"
+            android:padding="0pt"
+            android:scaleType="fitXY"
+            android:src="@drawable/simple_pencil"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/blackPencilBtn"
+            app:layout_constraintTop_toTopOf="@id/blackPencilBtn" />
+
+        <ImageButton
+            android:id="@+id/yellowPencilBtn"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="280dp"
+            android:contentDescription="@string/pencil_names"
+            android:padding="0pt"
+            android:scaleType="fitXY"
+            android:src="@drawable/simple_pencil"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/blackPencilBtn"
+            app:layout_constraintTop_toTopOf="@id/blackPencilBtn" />
+
+        <ImageButton
+            android:id="@+id/orangePencilBtn"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="335dp"
+            android:contentDescription="@string/pencil_names"
+            android:padding="0pt"
+            android:scaleType="fitXY"
+            android:src="@drawable/simple_pencil"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/blackPencilBtn"
+            app:layout_constraintTop_toTopOf="@id/blackPencilBtn" />
+
+        <ImageButton
+            android:id="@+id/redPencilBtn"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="390dp"
+            android:contentDescription="@string/pencil_names"
+            android:padding="0pt"
+            android:scaleType="fitXY"
+            android:src="@drawable/simple_pencil"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/blackPencilBtn"
+            app:layout_constraintTop_toTopOf="@id/blackPencilBtn" />
+
+        <ImageButton
+            android:id="@+id/eraserBtn"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="445dp"
+            android:contentDescription="@string/pencil_names"
+            android:padding="0pt"
+            android:scaleType="fitXY"
+            android:src="@drawable/simple_pencil"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/blackPencilBtn"
+            app:layout_constraintTop_toTopOf="@id/blackPencilBtn" />
+
+        <ImageButton
+            android:id="@+id/saveBtn"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="500dp"
+            android:contentDescription="@string/pencil_names"
+            android:padding="0pt"
+            android:scaleType="fitXY"
+            android:src="@drawable/simple_pencil"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/blackPencilBtn"
+            app:layout_constraintTop_toTopOf="@id/blackPencilBtn" />
+
+        <ImageButton
+            android:id="@+id/undoBtn"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="555dp"
+            android:contentDescription="@string/pencil_names"
+            android:padding="0pt"
+            android:scaleType="fitXY"
+            android:src="@drawable/simple_pencil"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/blackPencilBtn"
+            app:layout_constraintTop_toTopOf="@id/blackPencilBtn" />
+    </RelativeLayout>
+</LinearLayout>
