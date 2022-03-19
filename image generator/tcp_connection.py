@@ -14,7 +14,7 @@ while True:
 
     client_socket, client_address = server.accept()
 
-    file = open('image_to_be_given_to_CLIP', 'wb')
+    file = open('image_to_be_given_to_CLIP.jpg', 'wb')
     image_chunk = client_socket.recv(4096)
 
     while image_chunk:
@@ -34,7 +34,7 @@ while True:
     cifar100 = CIFAR100(root=os.path.expanduser("~/.cache"), download=True, train=False)
 
     # Prepare the inputs
-    image = PIL.Image.open('image_to_be_given_to_CLIP')
+    image = PIL.Image.open('image_to_be_given_to_CLIP.jpg')
     image_input = preprocess(image).unsqueeze(0).to(device)
     text_inputs = torch.cat([clip.tokenize(f"a photo of a {c}") for c in cifar100.classes]).to(device)
 
