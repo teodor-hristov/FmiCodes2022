@@ -23,18 +23,12 @@ class MyWidget extends StatelessWidget {
 
 class MyCustomPainter extends CustomPainter {
   // Method to draw on the canvas
-  @override
   void paint(Canvas canvas, Size size) {
-    Paint paintMountains = Paint()
-      ..style = PaintingStyle.fill
-      ..color = Colors.brown;
-
-    Paint paintSun = Paint()
-      ..style = PaintingStyle.fill
-      ..color = Colors.deepOrangeAccent;
-
+    // 1
+    Paint paint = Paint()..style = PaintingStyle.stroke;
+    // 2
     Path path = Path();
-    // Drawing mountains
+    // 3
     path.moveTo(0, 250);
     path.lineTo(100, 200);
     path.lineTo(150, 150);
@@ -43,14 +37,17 @@ class MyCustomPainter extends CustomPainter {
     path.lineTo(300, 200);
     path.lineTo(size.width, 250);
     path.lineTo(0, 250);
-    canvas.drawPath(path, paintMountains);
 
-    // Drawing the sun
-    path = Path();
+    // 4
     path.moveTo(100, 100);
     path.addOval(Rect.fromCircle(center: Offset(100, 100), radius: 25));
-    canvas.drawPath(path, paintSun);
+
+    // 5
+    canvas.drawPath(path, paint);
   }
+
+
+
 
   // Method to decide if repainting is necessary on rebuild
   @override

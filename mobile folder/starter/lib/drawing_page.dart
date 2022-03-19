@@ -28,20 +28,38 @@ class _DrawingPageState extends State<DrawingPage> {
   }
 
   void onPanStart(DragStartDetails details) {
-    // TODO
+    print('User started drawing');
+    final box = context.findRenderObject() as RenderBox;
+    final point = box.globalToLocal(details.globalPosition);
+    print(point);
   }
 
   void onPanUpdate(DragUpdateDetails details) {
-    // TODO
+    final box = context.findRenderObject() as RenderBox;
+    final point = box.globalToLocal(details.globalPosition);
+    print(point);
   }
 
   void onPanEnd(DragEndDetails details) {
-    // TODO
+    print('User ended drawing');
   }
 
-  Widget buildCurrentPath(BuildContext context) {
-    // TODO
+  GestureDetector buildCurrentPath(BuildContext context) {
+    return GestureDetector(
+      onPanStart: onPanStart,
+      onPanUpdate: onPanUpdate,
+      onPanEnd: onPanEnd,
+      child: RepaintBoundary(
+        child: Container(
+          color: Colors.transparent,
+          width: MediaQuery.of(context).size.width-50,
+          height: MediaQuery.of(context).size.height,
+          // CustomPaint widget will go here
+        ),
+      ),
+    );
   }
+
 
   Widget buildAllPaths(BuildContext context) {
     // TODO
@@ -116,9 +134,9 @@ class _DrawingPageState extends State<DrawingPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.yellow[50],
+      backgroundColor: Color(0xFFFFFFFF),
       body: Stack(
-        children: [],
+        children: [buildCurrentPath(context)],
       ),
     );
   }
