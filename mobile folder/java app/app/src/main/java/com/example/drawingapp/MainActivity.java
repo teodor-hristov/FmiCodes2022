@@ -1,9 +1,11 @@
 package com.example.drawingapp;
 
 import android.content.ContentValues;
+import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
@@ -11,6 +13,7 @@ import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.ImageButton;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.OutputStream;
@@ -30,6 +33,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_main);
 
         // getting the reference of the views from their ids
@@ -66,10 +70,13 @@ public class MainActivity extends AppCompatActivity
         // the save button will save the current
         // canvas which is actually a bitmap
         // in form of PNG, in the storage
-        save.setOnClickListener(new View.OnClickListener() {
+        save.setOnClickListener(new View.OnClickListener()
+        {
+            @RequiresApi(api = Build.VERSION_CODES.Q)
             @Override
-            public void onClick(View view) {
-                // getting the bitmap from DrawView class
+            public void onClick(View view)
+            {
+                // getting the bitmap from PaintView class
                 Bitmap bmp = paint.save();
 
                 // opening a OutputStream to write into the file
@@ -90,13 +97,19 @@ public class MainActivity extends AppCompatActivity
                 Uri uri = getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, cv);
                 try {
                     // open the output stream with the above uri
-                    imageOutStream = getContentResolver().openOutputStream(uri);
+                    if(uri!=null)
+                    {
+                        imageOutStream = getContentResolver().openOutputStream(uri);
+                    }
 
                     // this method writes the files in storage
                     bmp.compress(Bitmap.CompressFormat.PNG, 100, imageOutStream);
 
                     // close the output stream after use
-                    imageOutStream.close();
+                    if(uri!=null)
+                    {
+                        imageOutStream.close();
+                    }
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
