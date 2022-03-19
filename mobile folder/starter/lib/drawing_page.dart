@@ -107,7 +107,24 @@ class _DrawingPageState extends State<DrawingPage> {
   }
 
   Widget buildColorToolbar() {
-    // TODO
+    return Positioned(
+      top: 40.0,
+      right: 10.0,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          buildColorButton(Colors.black),
+          buildColorButton(Color(0xff6639a6)),
+          buildColorButton(Color(0xff227297)),
+          buildColorButton(Color(0xff3ba082)),
+          buildColorButton(Color(0xff85b762)),
+          buildColorButton(Color(0xfff7bf46)),
+          buildColorButton(Color(0xfff38b1a)),
+          buildColorButton(Color(0xfff7393b)),
+        ],
+      ),
+    );
   }
 
   Widget buildColorButton(Color color) {
