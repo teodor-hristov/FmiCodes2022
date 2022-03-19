@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity
         eraser = (ImageButton) findViewById(R.id.eraserBtn);
         undo = (ImageButton) findViewById(R.id.undoBtn);
         save = (ImageButton) findViewById(R.id.saveBtn);
+        eraser = (ImageButton) findViewById(R.id.eraserBtn);
         /*undo = (ImageButton) findViewById(R.id.btn_undo);
         save = (ImageButton) findViewById(R.id.btn_save);
         color = (ImageButton) findViewById(R.id.btn_color);
@@ -171,6 +172,14 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 paint.setColor(0xFFF7393B);
+            }
+        });
+
+        eraser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                paint.setColor(Color.WHITE);
+                paint.setStrokeWidth(20);
             }
         });
 
