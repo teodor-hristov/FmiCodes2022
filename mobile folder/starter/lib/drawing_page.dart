@@ -34,8 +34,12 @@ class _DrawingPageState extends State<DrawingPage> {
     final box = context.findRenderObject() as RenderBox;
     final point = box.globalToLocal(details.globalPosition);
     print(point);
+    if(line == null)
+      {
+        line = DrawnLine([point], selectedColor,selectedWidth);
+      }
     setState(() {
-      line = DrawnLine([point], selectedColor,selectedWidth);
+      //line = DrawnLine([point], selectedColor,selectedWidth);
     });
   }
 
@@ -51,8 +55,9 @@ class _DrawingPageState extends State<DrawingPage> {
   }
 
   void onPanEnd(DragEndDetails details) {
+    final path=List.from(line.path)..add(null); //add null separator for new lines
     setState(() {
-      print("User ended drawing");
+      line = DrawnLine(path, selectedColor, selectedWidth);
     });
   }
 
