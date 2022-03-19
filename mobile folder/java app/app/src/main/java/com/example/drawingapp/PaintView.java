@@ -12,49 +12,6 @@ import android.view.View;
 
 import java.util.ArrayList;
 
-/*public class PaintView extends View {
-
-    public ViewGroup.LayoutParams params;
-    private Path path = new Path();
-    private Paint brush = new Paint();
-
-
-    public PaintView(Context context) {
-        super(context);
-
-        brush.setAntiAlias(true);
-        brush.setColor(Color.BLACK);
-        brush.setStyle(Paint.Style.STROKE);
-        brush.setStrokeJoin(Paint.Join.ROUND);
-        brush.setStrokeWidth(8f);
-
-        params=new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-    }
-
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        float pointX = event.getX();
-        float pointY = event.getY();
-
-        switch (event.getAction()){
-            case MotionEvent.ACTION_DOWN:
-                path.moveTo(pointX, pointY);
-                return true;
-            case MotionEvent.ACTION_MOVE:
-                path.lineTo(pointX,pointY);
-                break;
-            default:
-                return false;
-        }
-        postInvalidate();
-        return false;
-    }
-
-    @Override
-    protected void onDraw(Canvas canvas) {
-        canvas.drawPath(path,brush);
-    }
-}*/
 public class PaintView extends View
 {
     private static final float TOUCH_TOLERANCE = 4;
@@ -69,7 +26,7 @@ public class PaintView extends View
     private int currentColor;
     private int strokeWidth;
     private Bitmap mBitmap;
-    private Canvas canvas;
+    private Canvas mCanvas;
     private Paint mBitmapPaint = new Paint(Paint.DITHER_FLAG);
 
     // Constructors to initialise all the attributes
@@ -98,7 +55,7 @@ public class PaintView extends View
     public void init(int height, int width)
     {
         mBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
-        canvas = new Canvas(mBitmap);
+        mCanvas = new Canvas(mBitmap);
 
         currentColor = Color.BLACK;
 
@@ -141,14 +98,14 @@ public class PaintView extends View
 
         // DEFAULT color of the canvas
         int backgroundColor = Color.WHITE;
-        canvas.drawColor(backgroundColor);
+        mCanvas.drawColor(backgroundColor);
 
         // now, we iterate over the list of paths
         // and draw each path on the canvas
         for (Stroke fp : paths) {
             paint.setColor(fp.color);
             paint.setStrokeWidth(fp.strokeWidth);
-            canvas.drawPath(fp.path, paint);
+            mCanvas.drawPath(fp.path, paint);
         }
         canvas.drawBitmap(mBitmap, 0, 0, mBitmapPaint);
         canvas.restore();
