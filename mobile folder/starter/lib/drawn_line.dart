@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class DrawnLine {
-  final List<Offset> path;
+  final List<dynamic> path;
   final Color color;
   final double width;
 

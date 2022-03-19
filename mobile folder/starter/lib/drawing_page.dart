@@ -1,6 +1,8 @@
 import 'dart:async';
+import 'package:http/http.dart';
 
 import 'package:drawing_app/drawn_line.dart';
+import 'package:drawing_app/sketcher.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
@@ -32,19 +34,30 @@ class _DrawingPageState extends State<DrawingPage> {
     final box = context.findRenderObject() as RenderBox;
     final point = box.globalToLocal(details.globalPosition);
     print(point);
+    setState(() {
+      line = DrawnLine([point], selectedColor,selectedWidth);
+    });
   }
 
   void onPanUpdate(DragUpdateDetails details) {
     final box = context.findRenderObject() as RenderBox;
     final point = box.globalToLocal(details.globalPosition);
     print(point);
+
+    final path = List.from(line.path)..add(point);
+    setState((){
+      line = DrawnLine(path, selectedColor, selectedWidth);
+    });
   }
 
   void onPanEnd(DragEndDetails details) {
-    print('User ended drawing');
+    setState(() {
+      print("User ended drawing");
+    });
   }
 
   GestureDetector buildCurrentPath(BuildContext context) {
+
     return GestureDetector(
       onPanStart: onPanStart,
       onPanUpdate: onPanUpdate,
@@ -54,6 +67,9 @@ class _DrawingPageState extends State<DrawingPage> {
           color: Colors.transparent,
           width: MediaQuery.of(context).size.width-50,
           height: MediaQuery.of(context).size.height,
+          child: CustomPaint(
+            painter: Sketcher(lines:[line]),
+          ),
           // CustomPaint widget will go here
         ),
       ),

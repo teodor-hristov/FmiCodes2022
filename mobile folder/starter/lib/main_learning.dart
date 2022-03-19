@@ -46,9 +46,6 @@ class MyCustomPainter extends CustomPainter {
     canvas.drawPath(path, paint);
   }
 
-
-
-
   // Method to decide if repainting is necessary on rebuild
   @override
   bool shouldRepaint(MyCustomPainter delegate) {
