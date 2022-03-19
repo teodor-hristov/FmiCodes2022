@@ -218,7 +218,7 @@ def load_vqgan_model(config_path, checkpoint_path):
         raise ValueError(f'unknown model type: {config.model.target}')
     del model.loss
     return model
- 
+
  
 def resize_image(image, out_size):
     ratio = image.size[0] / image.size[1]
@@ -229,15 +229,15 @@ def resize_image(image, out_size):
 
 
 #@title Parameters
-prompts = "george clooney gives advice on becoming rich" #@param {type:"string"}
-width =  64#@param {type:"number"}
-height =  64#@param {type:"number"}
+prompts = "abstract dog running" #@param {type:"string"}
+width =  256#@param {type:"number"}
+height =  256#@param {type:"number"}
 model = "sflckr" #@param ["vqgan_imagenet_f16_16384", "vqgan_imagenet_f16_1024", "wikiart_16384", "coco", "faceshq", "sflckr"]
 display_frequency =  25#@param {type:"number"}
 initial_image = ""#@param {type:"string"}
 target_images = ""#@param {type:"string"}
 seed = -1#@param {type:"number"}
-max_iterations = 20#@param {type:"number"}
+max_iterations = 5#@param {type:"number"}
 input_images = ""
 
 model_names={"vqgan_imagenet_f16_16384": 'ImageNet 16384',"vqgan_imagenet_f16_1024":"ImageNet 1024", 
