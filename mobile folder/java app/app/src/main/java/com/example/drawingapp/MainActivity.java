@@ -30,14 +30,14 @@ public class MainActivity extends AppCompatActivity
 
     // creating objects of type button
     private ImageButton blackPencil, purplePencil, bluePencil, turquoisePencil, greenPencil,
-            yellowPencil, orangePencil, redPencil, eraser, save, stroke;
+            yellowPencil, orangePencil, redPencil, eraser, save, smallStroke, normalStroke, bigStroke;
 
     private FloatingActionButton undo;
 
     private ImageButton[] buttons=
             {
                     blackPencil, purplePencil, bluePencil, turquoisePencil, greenPencil,
-                    yellowPencil, orangePencil, redPencil, eraser, save, stroke, undo
+                    yellowPencil, orangePencil, redPencil, eraser, save, undo
             };
 
     // creating a RangeSlider object, which will
@@ -94,7 +94,6 @@ public class MainActivity extends AppCompatActivity
 
         // getting the reference of the views from their ids
         paint = (PaintView) findViewById(R.id.paint_view);
-        //rangeSlider = (RangeSlider) findViewById(R.id.rangebar);
         blackPencil = (ImageButton) findViewById(R.id.blackPencilBtn);
         purplePencil = (ImageButton) findViewById(R.id.purplePencilBtn);
         bluePencil = (ImageButton) findViewById(R.id.bluePencilBtn);
@@ -107,10 +106,9 @@ public class MainActivity extends AppCompatActivity
         undo = (FloatingActionButton) findViewById(R.id.undoButton);
         save = (ImageButton) findViewById(R.id.saveBtn);
         eraser = (ImageButton) findViewById(R.id.eraserBtn);
-        /*undo = (ImageButton) findViewById(R.id.btn_undo);
-        save = (ImageButton) findViewById(R.id.btn_save);
-        color = (ImageButton) findViewById(R.id.btn_color);
-        stroke = (ImageButton) findViewById(R.id.btn_stroke);*/
+        smallStroke=(ImageButton) findViewById(R.id.smallBrushBtn);
+        normalStroke=(ImageButton) findViewById(R.id.normalBrushBtn);
+        bigStroke=(ImageButton) findViewById(R.id.bigBrushBtn);
 
         // creating a OnClickListener for each button,
         // to perform certain actions
@@ -265,30 +263,35 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-        // the button will toggle the visibility of the RangeBar/RangeSlider
-        /*stroke.setOnClickListener(new View.OnClickListener() {
+        smallStroke.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (rangeSlider.getVisibility() == View.VISIBLE)
-                    rangeSlider.setVisibility(View.GONE);
-                else
-                    rangeSlider.setVisibility(View.VISIBLE);
+                normalStroke.setImageResource(R.drawable.normal_stroke);
+                bigStroke.setImageResource(R.drawable.big_stroke);
+                smallStroke.setImageResource(R.drawable.small_stroke_picked);
+                paint.setStrokeWidth(10);
             }
-        });*/
+        });
 
-        // set the range of the RangeSlider
-        /*rangeSlider.setValueFrom(0.0f);
-        rangeSlider.setValueTo(100.0f);*/
-
-        // adding a OnChangeListener which will
-        // change the stroke width
-        // as soon as the user slides the slider
-        /*rangeSlider.addOnChangeListener(new RangeSlider.OnChangeListener() {
+        normalStroke.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onValueChange(@NonNull RangeSlider slider, float value, boolean fromUser) {
-                paint.setStrokeWidth((int) value);
+            public void onClick(View view) {
+                smallStroke.setImageResource(R.drawable.small_stroke);
+                bigStroke.setImageResource(R.drawable.big_stroke);
+                normalStroke.setImageResource(R.drawable.normal_stroke_picked);
+                paint.setStrokeWidth(20);
             }
-        });*/
+        });
+
+        bigStroke.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                normalStroke.setImageResource(R.drawable.normal_stroke);
+                smallStroke.setImageResource(R.drawable.small_stroke);
+                bigStroke.setImageResource(R.drawable.big_stroke_picked);
+                paint.setStrokeWidth(30);
+            }
+        });
 
         // pass the height and width of the custom view
         // to the init method of the DrawView object
