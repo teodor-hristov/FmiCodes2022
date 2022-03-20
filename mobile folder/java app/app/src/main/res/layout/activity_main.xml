@@ -17,6 +17,26 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_centerInParent="true" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/undoButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            app:srcCompat="@drawable/undo_icon" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/saveBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="25dp"
+            android:layout_marginBottom="30dp"
+            android:clickable="true"
+            app:srcCompat="@drawable/send_icon2" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -35,7 +55,7 @@
             android:layout_marginTop="5dp"
             android:padding="0pt"
             android:scaleType="fitXY"
-            android:src="@drawable/black_pencil"
+            android:src="@drawable/black_pencil_picked"
             android:background="@null"
             app:layout_constraintBottom_toBottomOf="@+id/purplePencilBtn"
             app:layout_constraintEnd_toEndOf="parent"
@@ -180,16 +200,35 @@
             app:layout_constraintTop_toTopOf="@id/blackPencilBtn" />
 
         <ImageButton
-            android:id="@+id/saveBtn"
+            android:id="@+id/smallBrushBtn"
             android:layout_width="100dp"
-            android:layout_height="50dp"
+            android:layout_height="70dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="500dp"
+            android:layout_marginLeft="10dp"
             android:contentDescription="@string/pencil_names"
             android:padding="0pt"
-            android:scaleType="fitXY"
-            android:src="@drawable/send_icon2"
+            android:scaleType="centerInside"
+            android:src="@drawable/small_stroke"
+            android:background="@null"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/smallBrushBtn"
+            app:layout_constraintTop_toTopOf="@id/blackPencilBtn" />
+
+        <ImageButton
+            android:id="@+id/normalBrushBtn"
+            android:layout_width="100dp"
+            android:layout_height="60dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="555dp"
+            android:layout_marginLeft="10dp"
+            android:contentDescription="@string/pencil_names"
+            android:padding="0pt"
+            android:scaleType="centerInside"
+            android:src="@drawable/normal_stroke_picked"
             android:background="@null"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -197,16 +236,18 @@
             app:layout_constraintTop_toTopOf="@id/blackPencilBtn" />
 
         <ImageButton
-            android:id="@+id/undoBtn"
+            android:id="@+id/bigBrushBtn"
             android:layout_width="100dp"
             android:layout_height="60dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginTop="560dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="610dp"
             android:contentDescription="@string/pencil_names"
             android:padding="0pt"
-            android:scaleType="fitXY"
-            android:src="@drawable/undo_icon"
+            android:scaleType="centerInside"
+            android:src="@drawable/big_stroke"
+            android:background="@null"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@id/blackPencilBtn"

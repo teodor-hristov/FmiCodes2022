@@ -16,6 +16,8 @@ import android.widget.ImageButton;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -28,7 +30,16 @@ public class MainActivity extends AppCompatActivity
 
     // creating objects of type button
     private ImageButton blackPencil, purplePencil, bluePencil, turquoisePencil, greenPencil,
-            yellowPencil, orangePencil, redPencil, eraser, save, stroke, undo;
+            yellowPencil, orangePencil, redPencil, eraser, smallStroke, normalStroke, bigStroke;
+
+    private FloatingActionButton undo;
+    private FloatingActionButton save;
+
+    private ImageButton[] buttons=
+            {
+                    blackPencil, purplePencil, bluePencil, turquoisePencil, greenPencil,
+                    yellowPencil, orangePencil, redPencil, eraser, save, undo
+            };
 
     // creating a RangeSlider object, which will
     // help in selecting the width of the Stroke
@@ -61,6 +72,19 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
+    private void unpickEveryPencil()
+    {
+        blackPencil.setImageResource(R.drawable.black_pencil);
+        purplePencil.setImageResource(R.drawable.purple_pencil);
+        bluePencil.setImageResource(R.drawable.blue_pencil);
+        turquoisePencil.setImageResource(R.drawable.turquoise_pencil);
+        greenPencil.setImageResource(R.drawable.green_pencil);
+        yellowPencil.setImageResource(R.drawable.yellow_pencil);
+        orangePencil.setImageResource(R.drawable.orange_pencil);
+        redPencil.setImageResource(R.drawable.red_pencil);
+        eraser.setImageResource(R.drawable.eraser);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,7 +93,6 @@ public class MainActivity extends AppCompatActivity
 
         // getting the reference of the views from their ids
         paint = (PaintView) findViewById(R.id.paint_view);
-        //rangeSlider = (RangeSlider) findViewById(R.id.rangebar);
         blackPencil = (ImageButton) findViewById(R.id.blackPencilBtn);
         purplePencil = (ImageButton) findViewById(R.id.purplePencilBtn);
         bluePencil = (ImageButton) findViewById(R.id.bluePencilBtn);
@@ -79,13 +102,12 @@ public class MainActivity extends AppCompatActivity
         orangePencil = (ImageButton) findViewById(R.id.orangePencilBtn);
         redPencil = (ImageButton) findViewById(R.id.redPencilBtn);
         eraser = (ImageButton) findViewById(R.id.eraserBtn);
-        undo = (ImageButton) findViewById(R.id.undoBtn);
-        save = (ImageButton) findViewById(R.id.saveBtn);
+        undo = (FloatingActionButton) findViewById(R.id.undoButton);
+        save = (FloatingActionButton) findViewById(R.id.saveBtn);
         eraser = (ImageButton) findViewById(R.id.eraserBtn);
-        /*undo = (ImageButton) findViewById(R.id.btn_undo);
-        save = (ImageButton) findViewById(R.id.btn_save);
-        color = (ImageButton) findViewById(R.id.btn_color);
-        stroke = (ImageButton) findViewById(R.id.btn_stroke);*/
+        smallStroke=(ImageButton) findViewById(R.id.smallBrushBtn);
+        normalStroke=(ImageButton) findViewById(R.id.normalBrushBtn);
+        bigStroke=(ImageButton) findViewById(R.id.bigBrushBtn);
 
         // creating a OnClickListener for each button,
         // to perform certain actions
@@ -162,6 +184,8 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 paint.setColor(Color.BLACK);
+                unpickEveryPencil();
+                blackPencil.setImageResource(R.drawable.black_pencil_picked);
             }
         });
 
@@ -169,6 +193,8 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 paint.setColor(0xFF6639A6);
+                unpickEveryPencil();
+                purplePencil.setImageResource(R.drawable.purple_pencil_picked);
             }
         });
 
@@ -176,6 +202,8 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 paint.setColor(0xFF227297);
+                unpickEveryPencil();
+                bluePencil.setImageResource(R.drawable.blue_pencil_picked);
             }
         });
 
@@ -183,6 +211,8 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 paint.setColor(0xFF3BA082);
+                unpickEveryPencil();
+                turquoisePencil.setImageResource(R.drawable.turquoise_pencil_picked);
             }
         });
 
@@ -190,6 +220,8 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 paint.setColor(0xFF85B762);
+                unpickEveryPencil();
+                greenPencil.setImageResource(R.drawable.green_pencil_picked);
             }
         });
 
@@ -197,6 +229,8 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 paint.setColor(0xFFF7BF46);
+                unpickEveryPencil();
+                yellowPencil.setImageResource(R.drawable.yellow_pencil_picked);
             }
         });
 
@@ -204,6 +238,8 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 paint.setColor(0xFFF38B1A);
+                unpickEveryPencil();
+                orangePencil.setImageResource(R.drawable.orange_pencil_picked);
             }
         });
 
@@ -211,6 +247,8 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 paint.setColor(0xFFF7393B);
+                unpickEveryPencil();
+                redPencil.setImageResource(R.drawable.red_pencil_picked);
             }
         });
 
@@ -219,33 +257,40 @@ public class MainActivity extends AppCompatActivity
             public void onClick(View view) {
                 paint.setColor(Color.WHITE);
                 paint.setStrokeWidth(20);
+                unpickEveryPencil();
+                eraser.setImageResource(R.drawable.eraser_picked);
             }
         });
 
-        // the button will toggle the visibility of the RangeBar/RangeSlider
-        /*stroke.setOnClickListener(new View.OnClickListener() {
+        smallStroke.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (rangeSlider.getVisibility() == View.VISIBLE)
-                    rangeSlider.setVisibility(View.GONE);
-                else
-                    rangeSlider.setVisibility(View.VISIBLE);
+                normalStroke.setImageResource(R.drawable.normal_stroke);
+                bigStroke.setImageResource(R.drawable.big_stroke);
+                smallStroke.setImageResource(R.drawable.small_stroke_picked);
+                paint.setStrokeWidth(10);
             }
-        });*/
+        });
 
-        // set the range of the RangeSlider
-        /*rangeSlider.setValueFrom(0.0f);
-        rangeSlider.setValueTo(100.0f);*/
-
-        // adding a OnChangeListener which will
-        // change the stroke width
-        // as soon as the user slides the slider
-        /*rangeSlider.addOnChangeListener(new RangeSlider.OnChangeListener() {
+        normalStroke.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onValueChange(@NonNull RangeSlider slider, float value, boolean fromUser) {
-                paint.setStrokeWidth((int) value);
+            public void onClick(View view) {
+                smallStroke.setImageResource(R.drawable.small_stroke);
+                bigStroke.setImageResource(R.drawable.big_stroke);
+                normalStroke.setImageResource(R.drawable.normal_stroke_picked);
+                paint.setStrokeWidth(20);
             }
-        });*/
+        });
+
+        bigStroke.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                normalStroke.setImageResource(R.drawable.normal_stroke);
+                smallStroke.setImageResource(R.drawable.small_stroke);
+                bigStroke.setImageResource(R.drawable.big_stroke_picked);
+                paint.setStrokeWidth(30);
+            }
+        });
 
         // pass the height and width of the custom view
         // to the init method of the DrawView object
