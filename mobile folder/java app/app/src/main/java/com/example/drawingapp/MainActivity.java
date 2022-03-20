@@ -16,6 +16,8 @@ import android.widget.ImageButton;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -28,7 +30,9 @@ public class MainActivity extends AppCompatActivity
 
     // creating objects of type button
     private ImageButton blackPencil, purplePencil, bluePencil, turquoisePencil, greenPencil,
-            yellowPencil, orangePencil, redPencil, eraser, save, stroke, undo;
+            yellowPencil, orangePencil, redPencil, eraser, save, stroke;
+
+    private FloatingActionButton undo;
 
     private ImageButton[] buttons=
             {
@@ -100,7 +104,7 @@ public class MainActivity extends AppCompatActivity
         orangePencil = (ImageButton) findViewById(R.id.orangePencilBtn);
         redPencil = (ImageButton) findViewById(R.id.redPencilBtn);
         eraser = (ImageButton) findViewById(R.id.eraserBtn);
-        undo = (ImageButton) findViewById(R.id.undoBtn);
+        undo = (FloatingActionButton) findViewById(R.id.undoButton);
         save = (ImageButton) findViewById(R.id.saveBtn);
         eraser = (ImageButton) findViewById(R.id.eraserBtn);
         /*undo = (ImageButton) findViewById(R.id.btn_undo);

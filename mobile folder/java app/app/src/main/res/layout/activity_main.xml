@@ -17,6 +17,15 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_centerInParent="true" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/undoButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            app:srcCompat="@drawable/undo_icon" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -196,21 +205,38 @@
             app:layout_constraintStart_toStartOf="@id/blackPencilBtn"
             app:layout_constraintTop_toTopOf="@id/blackPencilBtn" />
 
-        <ImageButton
-            android:id="@+id/undoBtn"
-            android:layout_width="100dp"
-            android:layout_height="60dp"
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/saveBtn"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginTop="560dp"
-            android:contentDescription="@string/pencil_names"
-            android:padding="0pt"
-            android:scaleType="fitXY"
-            android:src="@drawable/undo_icon"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@id/blackPencilBtn"
-            app:layout_constraintTop_toTopOf="@id/blackPencilBtn" />
+            android:layout_marginStart="-5dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="5dp"
+            android:text="Button" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/button3"
+            android:layout_marginTop="6dp"
+            android:text="Button" />
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/button"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="7dp"
+            android:layout_marginEnd="0dp"
+            android:text="Button" />
+
 
     </RelativeLayout>
 </LinearLayout>
