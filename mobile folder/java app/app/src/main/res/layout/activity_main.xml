@@ -24,8 +24,19 @@
             android:layout_height="wrap_content"
             android:clickable="true"
             android:layout_marginLeft="15dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="10dp"
             app:srcCompat="@drawable/undo_icon" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/saveBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="25dp"
+            android:layout_marginBottom="30dp"
+            android:clickable="true"
+            app:srcCompat="@drawable/send_icon2" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -189,29 +200,12 @@
             app:layout_constraintTop_toTopOf="@id/blackPencilBtn" />
 
         <ImageButton
-            android:id="@+id/saveBtn"
-            android:layout_width="100dp"
-            android:layout_height="50dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="500dp"
-            android:contentDescription="@string/pencil_names"
-            android:padding="0pt"
-            android:scaleType="fitXY"
-            android:src="@drawable/send_icon2"
-            android:background="@null"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@id/blackPencilBtn"
-            app:layout_constraintTop_toTopOf="@id/blackPencilBtn" />
-
-        <ImageButton
             android:id="@+id/smallBrushBtn"
             android:layout_width="100dp"
             android:layout_height="70dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginTop="555dp"
+            android:layout_marginTop="500dp"
             android:layout_marginLeft="10dp"
             android:contentDescription="@string/pencil_names"
             android:padding="0pt"
@@ -229,7 +223,7 @@
             android:layout_height="60dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginTop="610dp"
+            android:layout_marginTop="555dp"
             android:layout_marginLeft="10dp"
             android:contentDescription="@string/pencil_names"
             android:padding="0pt"
@@ -248,7 +242,7 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="665dp"
+            android:layout_marginTop="610dp"
             android:contentDescription="@string/pencil_names"
             android:padding="0pt"
             android:scaleType="centerInside"

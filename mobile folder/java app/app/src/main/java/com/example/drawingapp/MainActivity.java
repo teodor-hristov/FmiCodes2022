@@ -30,9 +30,10 @@ public class MainActivity extends AppCompatActivity
 
     // creating objects of type button
     private ImageButton blackPencil, purplePencil, bluePencil, turquoisePencil, greenPencil,
-            yellowPencil, orangePencil, redPencil, eraser, save, smallStroke, normalStroke, bigStroke;
+            yellowPencil, orangePencil, redPencil, eraser, smallStroke, normalStroke, bigStroke;
 
     private FloatingActionButton undo;
+    private FloatingActionButton save;
 
     private ImageButton[] buttons=
             {
@@ -104,7 +105,7 @@ public class MainActivity extends AppCompatActivity
         redPencil = (ImageButton) findViewById(R.id.redPencilBtn);
         eraser = (ImageButton) findViewById(R.id.eraserBtn);
         undo = (FloatingActionButton) findViewById(R.id.undoButton);
-        save = (ImageButton) findViewById(R.id.saveBtn);
+        save = (FloatingActionButton) findViewById(R.id.saveBtn);
         eraser = (ImageButton) findViewById(R.id.eraserBtn);
         smallStroke=(ImageButton) findViewById(R.id.smallBrushBtn);
         normalStroke=(ImageButton) findViewById(R.id.normalBrushBtn);
