@@ -37,8 +37,8 @@ public class MainActivity extends AppCompatActivity
     private void sendImage(Bitmap bmp){
         if (bmp == null)
             return;
-        String hostname = "172.31.215.31";
-        int port = 6666;
+        String hostname = "10.108.4.69";
+        int port = 8080;
 
         try (Socket socket = new Socket(hostname, port)) {
             OutputStream outputStream = socket.getOutputStream();
@@ -164,6 +164,7 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 paint.setColor(Color.BLACK);
+                blackPencil.
             }
         });
 
