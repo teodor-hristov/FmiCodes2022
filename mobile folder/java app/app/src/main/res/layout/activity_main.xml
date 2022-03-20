@@ -23,8 +23,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:clickable="true"
+            android:background="@null"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="10dp"
+            app:backgroundTint="@color/transparent"
             app:srcCompat="@drawable/undo_icon" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -35,6 +37,7 @@
             android:layout_alignParentBottom="true"
             android:layout_marginStart="25dp"
             android:layout_marginBottom="30dp"
+            app:backgroundTint="@color/transparent"
             android:clickable="true"
             app:srcCompat="@drawable/send_icon2" />
     </RelativeLayout>

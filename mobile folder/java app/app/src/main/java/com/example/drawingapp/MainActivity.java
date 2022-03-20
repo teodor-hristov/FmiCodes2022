@@ -18,11 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 import java.io.OutputStream;
-import java.net.Socket;
-import java.net.UnknownHostException;
 
 public class MainActivity extends AppCompatActivity
 {
@@ -35,6 +31,8 @@ public class MainActivity extends AppCompatActivity
     private FloatingActionButton undo;
     private FloatingActionButton save;
 
+    private Bitmap bmp = null;
+
     private ImageButton[] buttons=
             {
                     blackPencil, purplePencil, bluePencil, turquoisePencil, greenPencil,
@@ -45,32 +43,7 @@ public class MainActivity extends AppCompatActivity
     // help in selecting the width of the Stroke
     //private RangeSlider rangeSlider
 
-    private void sendImage(Bitmap bmp){
-        if (bmp == null)
-            return;
-        String hostname = "10.0.196.50";
-        int port = 6666;
 
-        try (Socket socket = new Socket(hostname, port)) {
-            OutputStream outputStream = socket.getOutputStream();
-            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-
-            System.out.println(socket.isConnected());
-            bmp.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
-            byte[] byteArray = byteArrayOutputStream.toByteArray();
-
-            System.out.println(byteArray);
-            outputStream.write(byteArray);
-
-        } catch (UnknownHostException ex) {
-
-            System.out.println("Server not found: " + ex.getMessage());
-
-        } catch (IOException ex) {
-
-            System.out.println("I/O error: " + ex.getMessage());
-        }
-    }
 
     private void unpickEveryPencil()
     {
@@ -109,6 +82,7 @@ public class MainActivity extends AppCompatActivity
         normalStroke=(ImageButton) findViewById(R.id.normalBrushBtn);
         bigStroke=(ImageButton) findViewById(R.id.bigBrushBtn);
 
+
         // creating a OnClickListener for each button,
         // to perform certain actions
 
@@ -130,9 +104,8 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View view)
             {
-                openDialog();
                 // getting the bitmap from PaintView class
-               final Bitmap bmp = paint.save();
+               bmp = paint.save();
 
                 // opening a OutputStream to write into the file
                 OutputStream imageOutStream = null;
@@ -166,16 +139,11 @@ public class MainActivity extends AppCompatActivity
                         imageOutStream.close();
                     }
 
-                    new Thread(new Runnable() {
-                        @Override
-                        public void run() {
-                            sendImage(bmp);
-                        }
-                    }).start();
-
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+
+                openDialog(bmp);
             }
         });
 
@@ -307,9 +275,15 @@ public class MainActivity extends AppCompatActivity
         });
     }
 
-    public void openDialog()
+    public void openDialog(final Bitmap bmp)
     {
         ImageDialog dialog = new ImageDialog();
         dialog.show(getSupportFragmentManager(), "image dialog");
     }
+
+    public Bitmap sendBmp()
+    {
+        return bmp;
+    }
+
 }
