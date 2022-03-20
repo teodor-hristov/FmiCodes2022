@@ -30,6 +30,12 @@ public class MainActivity extends AppCompatActivity
     private ImageButton blackPencil, purplePencil, bluePencil, turquoisePencil, greenPencil,
             yellowPencil, orangePencil, redPencil, eraser, save, stroke, undo;
 
+    private ImageButton[] buttons=
+            {
+                    blackPencil, purplePencil, bluePencil, turquoisePencil, greenPencil,
+                    yellowPencil, orangePencil, redPencil, eraser, save, stroke, undo
+            };
+
     // creating a RangeSlider object, which will
     // help in selecting the width of the Stroke
     //private RangeSlider rangeSlider
@@ -61,6 +67,19 @@ public class MainActivity extends AppCompatActivity
 
             System.out.println("I/O error: " + ex.getMessage());
         }
+    }
+
+    private void unpickEveryPencil()
+    {
+        blackPencil.setImageResource(R.drawable.black_pencil);
+        purplePencil.setImageResource(R.drawable.purple_pencil);
+        bluePencil.setImageResource(R.drawable.blue_pencil);
+        turquoisePencil.setImageResource(R.drawable.turquoise_pencil);
+        greenPencil.setImageResource(R.drawable.green_pencil);
+        yellowPencil.setImageResource(R.drawable.yellow_pencil);
+        orangePencil.setImageResource(R.drawable.orange_pencil);
+        redPencil.setImageResource(R.drawable.red_pencil);
+        eraser.setImageResource(R.drawable.eraser);
     }
 
     @Override
@@ -164,7 +183,8 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 paint.setColor(Color.BLACK);
-                blackPencil.
+                unpickEveryPencil();
+                blackPencil.setImageResource(R.drawable.black_pencil_picked);
             }
         });
 
@@ -172,6 +192,8 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 paint.setColor(0xFF6639A6);
+                unpickEveryPencil();
+                purplePencil.setImageResource(R.drawable.purple_pencil_picked);
             }
         });
 
@@ -179,6 +201,8 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 paint.setColor(0xFF227297);
+                unpickEveryPencil();
+                bluePencil.setImageResource(R.drawable.blue_pencil_picked);
             }
         });
 
@@ -186,6 +210,8 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 paint.setColor(0xFF3BA082);
+                unpickEveryPencil();
+                turquoisePencil.setImageResource(R.drawable.turquoise_pencil_picked);
             }
         });
 
@@ -193,6 +219,8 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 paint.setColor(0xFF85B762);
+                unpickEveryPencil();
+                greenPencil.setImageResource(R.drawable.green_pencil_picked);
             }
         });
 
@@ -200,6 +228,8 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 paint.setColor(0xFFF7BF46);
+                unpickEveryPencil();
+                yellowPencil.setImageResource(R.drawable.yellow_pencil_picked);
             }
         });
 
@@ -207,6 +237,8 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 paint.setColor(0xFFF38B1A);
+                unpickEveryPencil();
+                orangePencil.setImageResource(R.drawable.orange_pencil_picked);
             }
         });
 
@@ -214,6 +246,8 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 paint.setColor(0xFFF7393B);
+                unpickEveryPencil();
+                redPencil.setImageResource(R.drawable.red_pencil_picked);
             }
         });
 
@@ -222,6 +256,8 @@ public class MainActivity extends AppCompatActivity
             public void onClick(View view) {
                 paint.setColor(Color.WHITE);
                 paint.setStrokeWidth(20);
+                unpickEveryPencil();
+                eraser.setImageResource(R.drawable.eraser_picked);
             }
         });
 
