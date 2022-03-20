@@ -1,9 +1,9 @@
 import socket
 
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-client.connect(('localhost', 6666))  #ip = 127.0.0.1 , port = 6666
+client.connect(('127.0.0.1', 6666))  #ip = 127.0.0.1 , port = 6666
 
-file = open('luba.jpg', 'rb')
+file = open('dogo.jpg', 'rb')
 image_data = file.read(4096)
 
 while image_data:
