@@ -1,5 +1,5 @@
 from feed_forward_vqgan_clip.main import load_vqgan_model, CLIP_DIM, clamp_with_grad, synth, load_clip_model
-import os
+import os, sys
 
 import config as config
 
@@ -7,10 +7,26 @@ from IPython.display import Image
 import torch
 import clip
 import torchvision
+import ipywidgets as widgets
 
+from feed_forward_vqgan_clip.download_weights import model_url, download
+download("https://github.com/mehdidc/feed_forward_vqgan_clip/releases/download/0.1/vqgan_imagenet_f16_16384.yaml")
+download("https://github.com/mehdidc/feed_forward_vqgan_clip/releases/download/0.1/vqgan_imagenet_f16_16384.ckpt")
+
+
+dropdown = widgets.Dropdown(
+    options=model_url.keys(),
+    value='cc12m_32x1024_mlp_mixer_clip_ViTB32_256x256_v0.3.th',
+    description='Model:',
+    disabled=False,
+    layout={'width': 'max-content'},
+)
+model_path = dropdown.value
 
 device = "cuda" if torch.cuda.is_available() else "cpu"
-model_path = 'cc12m_32x1024_mlp_mixer_clip_ViTB32_256x256_v0.3.th'
+
+
+
 
 net = torch.load(model_path, map_location="cpu").to(device)
 config = net.config
@@ -46,3 +62,6 @@ with torch.no_grad():
 grid = torchvision.utils.make_grid(xr.cpu(), nrow=len(xr))
 pil_image = torchvision.transforms.functional.to_pil_image(grid)
 pil_image
+
+
+# pip install torch clip-anytorch clize einops==0.3.0 fsspec ftfy imageio kornia numpy omegaconf pandas Pillow pytorch-lightning requests taming-transformers-rom1504 tensorboard torch torchaudio torchmetrics torchvision torchtext entmax x-transformers==0.19.1
