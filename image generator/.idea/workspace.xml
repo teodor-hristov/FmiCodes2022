@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="8af31d6e-728e-4ba9-8170-f4bb9328e2a3" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../mobile folder/java app/.idea/deploymentTargetDropDown.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mobile folder/java app/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../mobile folder/java app/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mobile folder/java app/.idea/runConfigurations.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mobile folder/java app/app/src/main/java/com/example/drawingapp/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../mobile folder/java app/app/src/main/java/com/example/drawingapp/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mobile folder/java app/app/src/main/res/drawable/eraser_Picked.png" beforeDir="false" afterPath="$PROJECT_DIR$/../mobile folder/java app/app/src/main/res/drawable/eraser_picked.png" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="26dJ0uQ08ki7pXSSvh6ALsdESr8" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8af31d6e-728e-4ba9-8170-f4bb9328e2a3" name="Default Changelist" comment="" />
+      <created>1647747309688</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1647747309688</updated>
+    </task>
+    <servers />
+  </component>
+</project>
