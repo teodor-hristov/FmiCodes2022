@@ -16,7 +16,11 @@ import android.widget.ImageButton;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.io.OutputStream;
+import java.net.Socket;
+import java.net.UnknownHostException;
 
 public class MainActivity extends AppCompatActivity
 {
@@ -28,7 +32,36 @@ public class MainActivity extends AppCompatActivity
 
     // creating a RangeSlider object, which will
     // help in selecting the width of the Stroke
-    //private RangeSlider rangeSlider;
+    //private RangeSlider rangeSlider
+
+    private void sendImage(Bitmap bmp){
+        if (bmp == null)
+            return;
+        String hostname = "172.31.215.31";
+        int port = 6666;
+
+        try (Socket socket = new Socket(hostname, port)) {
+            OutputStream outputStream = socket.getOutputStream();
+            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+
+            bmp.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
+            byte[] byteArray = byteArrayOutputStream.toByteArray();
+            bmp.recycle();
+
+            System.out.println(byteArray);
+            outputStream.write(byteArray);
+
+            System.out.println("KURAMIQNKOOOOOOOOOOOOOOOOOOOO");
+
+        } catch (UnknownHostException ex) {
+
+            System.out.println("Server not found: " + ex.getMessage());
+
+        } catch (IOException ex) {
+
+            System.out.println("I/O error: " + ex.getMessage());
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,7 +111,7 @@ public class MainActivity extends AppCompatActivity
             public void onClick(View view)
             {
                 // getting the bitmap from PaintView class
-                Bitmap bmp = paint.save();
+               final Bitmap bmp = paint.save();
 
                 // opening a OutputStream to write into the file
                 OutputStream imageOutStream = null;
@@ -111,6 +144,14 @@ public class MainActivity extends AppCompatActivity
                     {
                         imageOutStream.close();
                     }
+
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            sendImage(bmp);
+                        }
+                    }).start();
+
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

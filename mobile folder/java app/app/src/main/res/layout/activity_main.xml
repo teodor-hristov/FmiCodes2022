@@ -179,7 +179,7 @@
             android:contentDescription="@string/pencil_names"
             android:padding="0pt"
             android:scaleType="fitXY"
-            android:src="@drawable/send_icon"
+            android:src="@drawable/send_icon2"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@id/blackPencilBtn"
@@ -187,18 +187,26 @@
 
         <ImageButton
             android:id="@+id/undoBtn"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_width="100dp"
+            android:layout_height="60dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginTop="555dp"
+            android:layout_marginTop="560dp"
             android:contentDescription="@string/pencil_names"
             android:padding="0pt"
             android:scaleType="fitXY"
-            android:src="@drawable/simple_pencil"
+            android:src="@drawable/undo_icon"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@id/blackPencilBtn"
             app:layout_constraintTop_toTopOf="@id/blackPencilBtn" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/sendActionButton"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:clickable="true"
+            app:srcCompat="@drawable/send_icon2"
+            android:layout_marginBottom="10dp"/>
     </RelativeLayout>
 </LinearLayout>
