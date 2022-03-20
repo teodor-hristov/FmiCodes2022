@@ -130,6 +130,7 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View view)
             {
+                openDialog();
                 // getting the bitmap from PaintView class
                final Bitmap bmp = paint.save();
 
@@ -304,5 +305,11 @@ public class MainActivity extends AppCompatActivity
                 paint.init(height, width);
             }
         });
+    }
+
+    public void openDialog()
+    {
+        ImageDialog dialog = new ImageDialog();
+        dialog.show(getSupportFragmentManager(), "image dialog");
     }
 }
