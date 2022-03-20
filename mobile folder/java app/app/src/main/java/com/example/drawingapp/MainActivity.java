@@ -37,21 +37,19 @@ public class MainActivity extends AppCompatActivity
     private void sendImage(Bitmap bmp){
         if (bmp == null)
             return;
-        String hostname = "10.108.4.69";
-        int port = 8080;
+        String hostname = "10.0.196.50";
+        int port = 6666;
 
         try (Socket socket = new Socket(hostname, port)) {
             OutputStream outputStream = socket.getOutputStream();
             ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
 
+            System.out.println(socket.isConnected());
             bmp.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
             byte[] byteArray = byteArrayOutputStream.toByteArray();
-            bmp.recycle();
 
             System.out.println(byteArray);
             outputStream.write(byteArray);
-
-            System.out.println("KURAMIQNKOOOOOOOOOOOOOOOOOOOO");
 
         } catch (UnknownHostException ex) {
 
@@ -164,7 +162,6 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 paint.setColor(Color.BLACK);
-                blackPencil.
             }
         });
 
